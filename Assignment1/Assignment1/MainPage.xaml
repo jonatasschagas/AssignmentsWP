@@ -1,0 +1,66 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Assignment1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+
+    <ScrollViewer>
+        <!--LayoutRoot is the root grid where all page content is placed-->
+        <Grid x:Name="LayoutRoot" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--TitlePanel contains the name of the application and page title-->
+            <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+                <TextBlock x:Name="ApplicationTitle" Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" Margin="0" />
+            </StackPanel>
+
+            <StackPanel  Margin="0,30,0,28">
+                <!--ContentPanel - place additional content here-->
+                <StackPanel Height="Auto" Orientation="Horizontal" HorizontalAlignment="Left" Margin="24,20,0,0" Name="StackPanelSecurity" VerticalAlignment="Top" Width="430"  >
+                    <!-- Security Label -->
+                    <TextBlock x:Name="SecurityTextBlock" Text="{Binding Path=LocalizedResources.SecurityLabel, Source={StaticResource LocalizedStrings}}" Margin="10,10,0,0" FontSize="28" />
+                    <!-- Show explanation toggle button -->
+                    <!-- When this button is pressed we show the explanation text -->
+                    <ToggleButton x:Name="ShowExplanationToggleButton" Content="{Binding Path=LocalizedResources.ShowExplanationLabel, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ShowExplanationToggleButton_Click" Margin="20,0,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <StackPanel Height="Auto" HorizontalAlignment="Left" Margin="24,16,0,0" Name="StackPaneComputerType" VerticalAlignment="Top" Width="430" Grid.Row="1">
+                        <!-- Public Computer Radio button -->
+                        <RadioButton Content="{Binding Path=LocalizedResources.PublicComputerRadioButton, Source={StaticResource LocalizedStrings}}" Height="71" Name="PublicComputerRadioButton" />
+                        <TextBlock Height="Auto" Name="PublicComputerExplanationTxt" Text="{Binding Path=LocalizedResources.PublicComputerExplanationTxt, Source={StaticResource LocalizedStrings}}" Width="Auto" Visibility="Collapsed" Margin="0,10,0,0" />
+                        <!-- Private Computer Radio button -->
+                        <RadioButton Content="{Binding Path=LocalizedResources.PrivateComputerRadioButton, Source={StaticResource LocalizedStrings}}" Height="71" Name="PrivateComputerRadioButton" Checked="PrivateComputerRadioButton_Checked" Unchecked="PrivateComputerRadioButton_Unchecked" />
+                        <TextBlock Height="Auto" Name="PrivateComputerExplanationTxt" Text="{Binding Path=LocalizedResources.PrivateComputerExplanationTxt, Source={StaticResource LocalizedStrings}}" Visibility="Collapsed" Margin="0,10,0,0" />
+                        <TextBlock Height="Auto" Name="WarningPrivateComputerTxt" Text="{Binding Path=LocalizedResources.WarningPrivateComputerTxt, Source={StaticResource LocalizedStrings}}" Visibility="Collapsed" Margin="0,10,0,0" />
+                    </StackPanel>
+                    <StackPanel Height="Auto" HorizontalAlignment="Left" Margin="24,10,0,0" Name="UseLightVersionStackPanel" VerticalAlignment="Top" Width="430" Grid.Row="1">
+                        <CheckBox Height="Auto" Name="UseLightVersionCheckBox" Content="{Binding Path=LocalizedResources.UseLightVersionCheckBox, Source={StaticResource LocalizedStrings}}" Checked="UseLightVersionCheckBox_Checked" Unchecked="UseLightVersionCheckBox_Unchecked" />
+                        <TextBlock Height="Auto" Name="UseLightVersionTxt" Text="{Binding Path=LocalizedResources.UseLightVersionTxt, Source={StaticResource LocalizedStrings}}" Visibility="Collapsed" Margin="0,10,0,0" />
+                        <Button Name="UseLightVersionMoreInfoBtn" Content="{Binding Path=LocalizedResources.UseLightVersionMoreInfoBtn, Source={StaticResource LocalizedStrings}}"  Visibility="Collapsed" Click="UseLightVersionMoreInfoBtn_Click" />
+                    </StackPanel>
+                    <StackPanel Height="Auto" HorizontalAlignment="Left" Margin="24,10,0,0" Name="LoginStackPanel" VerticalAlignment="Top" Width="430" Grid.Row="1">
+                        <TextBlock Text="{Binding Path=LocalizedResources.UserNameLabel, Source={StaticResource LocalizedStrings}}" />
+                        <TextBox Height="Auto" HorizontalAlignment="Stretch" Name="UserNameTextBox" />
+                        <TextBlock Text="{Binding Path=LocalizedResources.PasswordLabel, Source={StaticResource LocalizedStrings}}" />
+                        <PasswordBox Height="Auto" HorizontalAlignment="Stretch" Name="PasswordTextBox" />
+                        <Button Name="SignInBtn" Content="{Binding Path=LocalizedResources.SignInLabel, Source={StaticResource LocalizedStrings}}" Click="SignInBtn_Click" />                   
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+    
+</phone:PhoneApplicationPage>
